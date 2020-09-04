@@ -15,6 +15,7 @@
 /datum/map_z_level/triumph_lateload/misc
 	name = "Misc"
 	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_SEALED
+	z = Z_LEVEL_MISC
 
 /datum/map_template/triumph_lateload/triumph_ships
 	name = "Triumph - Ships"
@@ -33,7 +34,9 @@
 /// Away Missions
 #if AWAY_MISSION_TEST
 #include "space/debrisfield.dmm"
-#include "poi_d/Class-D.dmm"
+#include "space/piratebase.dmm"
+#include "mining_planet/mining_planet.dmm"
+//#include "poi_d/Class-D.dmm"
 #endif
 
 // Debris Field Exploration Zone.
@@ -57,6 +60,7 @@
 	seed_submaps(list(Z_LEVEL_DEBRISFIELD), 125, /area/triumph_away/debrisfield/unexplored, /datum/map_template/debrisfield/)
 
 // Class D Rogue Planet Exploration Zone.
+/*
 #include "poi_d/_class_d.dm"
 #include "poi_d/_templates.dm"
 #include "poi_d/d_world_things.dm"
@@ -70,13 +74,54 @@
 /datum/map_template/triumph_lateload/away_d_world/on_map_loaded(z)
 	. = ..()
 	seed_submaps(list(Z_LEVEL_UNKNOWN_PLANET), 150, /area/triumph_away/poi_d/unexplored, /datum/map_template/Class_D)
-
 	//new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, Z_LEVEL_UNKNOWN_PLANET, world.maxx - 30, world.maxy - 30)
 	//new /datum/random_map/noise/ore/poi_d(null, 1, 1, Z_LEVEL_UNKNOWN_PLANET, 64, 64)
 
 /datum/map_z_level/triumph_lateload/away_d_world
 	name = "Away Mission - Rogue Planet"
 	z = Z_LEVEL_UNKNOWN_PLANET
+*/
+
+// Pirate base
+#include "space/_piratebase.dm"
+#include "space/piratebase_things.dm"
+
+/datum/map_template/triumph_lateload/away_piratebase
+	name = "Away Mission - Pirate Base"
+	desc = "A Vox Marauder Base, oh no!"
+	mappath = 'space/piratebase.dmm'
+	associated_map_datum = /datum/map_z_level/triumph_lateload/away_piratebase
+	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = FALSE)
+
+/datum/map_z_level/triumph_lateload/away_piratebase
+	name = "Away Mission - Pirate Base"
+	z = Z_LEVEL_PIRATEBASE
+
+
+/datum/map_template/triumph_lateload/away_piratebase/on_map_loaded(z)
+	. = ..()
+
+
+// Mining Planet
+#include "mining_planet/_miningplanet.dm"
+
+/datum/map_template/triumph_lateload/away_mining_planet
+	name = "Away Mission - Mining Planet"
+	desc = "Mining Plante. For the miners to get actual supplies."
+	mappath = 'mining_planet/mining_planet.dmm'
+	associated_map_datum = /datum/map_z_level/triumph_lateload/away_mining_planet
+	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
+
+/datum/map_z_level/triumph_lateload/away_mining_planet
+	name = "Away Mission - Mining Planet"
+	z = Z_LEVEL_MININGPLANET
+
+
+/datum/map_template/triumph_lateload/away_mining_planet/on_map_loaded(z)
+	. = ..()
+	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_MININGPLANET, world.maxx - 4, world.maxy - 4) // Create the mining Z-level.
+	new /datum/random_map/noise/ore/mining_planet(null, 1, 1, Z_LEVEL_MININGPLANET, 64, 64)         // Create the mining ore distribution map.
+
 
 //////////////////////////////////////////////////////////////////////////////////////
 // Admin-use z-levels for loading whenever an admin feels like
@@ -230,7 +275,7 @@
 				my_mob.max_tox = gaslist[/datum/gas/phoron] * 1.2
 				my_mob.max_n2 = gaslist[/datum/gas/nitrogen] * 1.2
 				my_mob.max_co2 = gaslist[/datum/gas/carbon_dioxide] * 1.2
-/* //VORESTATION AI TEMPORARY REMOVAL
+/* // AI TEMPORARY REMOVAL
 		if(guard)
 			my_mob.returns_home = TRUE
 			my_mob.wander_distance = guard

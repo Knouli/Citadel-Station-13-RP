@@ -738,3 +738,98 @@ datum/gear/uniform/fienddress
 datum/gear/uniform/leotard
 	display_name = "Black leotard"
 	path = /obj/item/clothing/under/leotard
+
+datum/gear/uniform/leotardcolor
+	display_name = "Colored leotard"
+	path = /obj/item/clothing/under/leotardcolor
+
+/datum/gear/uniform/leotardcolor/New()
+	..()
+	gear_tweaks = list(gear_tweak_free_color_choice)
+
+datum/gear/uniform/verglasdress
+	display_name = "Verglas dress"
+	path = /obj/item/clothing/under/verglasdress
+
+datum/gear/uniform/fashionminiskirt
+	display_name = "Fashionable miniskirt"
+	path = /obj/item/clothing/under/fashionminiskirt
+
+/datum/gear/uniform/fashionminiskirt/New()
+	..()
+	gear_tweaks = list(gear_tweak_free_color_choice)
+
+datum/gear/uniform/bodysuiteva
+	display_name = "EVA Bodysuit"
+	path = /obj/item/clothing/under/bodysuit/bodysuiteva
+
+datum/gear/uniform/bodysuitemt
+	display_name = "EMT Bodysuit"
+	path = /obj/item/clothing/under/bodysuit/bodysuitemt
+	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Search and Rescue","Paramedic","Geneticist", "Psychiatrist")
+
+
+datum/gear/uniform/bodysuitexplocom
+	display_name = "Exploration Command Bodysuit"
+	path = /obj/item/clothing/under/bodysuit/bodysuitexplocom
+	allowed_roles = list("Research Director","Pathfinder")
+
+datum/gear/uniform/bodysuitexplo
+	display_name = "Exploration Bodysuit"
+	path = /obj/item/clothing/under/bodysuit/bodysuitexplo
+	allowed_roles = list("Reasearch Director","Pathfinder","Scientist","Roboticist","Xenobiologist")
+
+datum/gear/uniform/bodysuitminer
+	display_name = "Mining Bodysuit"
+	path = /obj/item/clothing/under/bodysuit/bodysuitminer
+	allowed_roles = list("Cargo Technician","Shaft Miner")
+
+datum/gear/uniform/bodysuithazard
+	display_name = "Hazard Bodysuit"
+	path = /obj/item/clothing/under/bodysuit/bodysuithazard
+	allowed_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Shaft Miner")
+
+datum/gear/uniform/bodysuitsec
+	display_name = "Security Bodysuit"
+	path = /obj/item/clothing/under/bodysuit/bodysuitsec
+	allowed_roles = list("Security Officer","Head of Security","Warden","Detective")
+
+datum/gear/uniform/bodysuitsecmed
+	display_name = "Security Medic Bodysuit"
+	path = /obj/item/clothing/under/bodysuit/bodysuitsecmed
+	allowed_roles = list("Security Officer","Head of Security","Medical Doctor")
+
+datum/gear/uniform/bodysuitseccom
+	display_name = "Security Command Bodysuit"
+	path = /obj/item/clothing/under/bodysuit/bodysuitseccom
+	allowed_roles = list("Head of Security","Warden")
+
+datum/gear/uniform/bodysuitcommand
+	display_name = "Command Bodysuit"
+	path = /obj/item/clothing/under/bodysuit/bodysuitcommand
+	allowed_roles = list("Head of Security","Facility Director","Head of Personnel","Chief Engineer","Research Director","Chief Medical Officer")
+
+// And after nearly successfully hanging myself, this is where the real game begins
+/datum/gear/uniform/future_fashion_light_blue_striped
+	display_name = "Futuristic Light Blue-Striped Jumpsuit"
+	path = /obj/item/clothing/under/future_fashion_light_blue_striped
+
+/datum/gear/uniform/future_fashion_dark_blue_striped
+	display_name = "Futuristic Dark Blue-Striped Jumpsuit"
+	path = /obj/item/clothing/under/future_fashion_dark_blue_striped
+
+/datum/gear/uniform/future_fashion_red_striped
+	display_name = "Futuristic Red-Striped Jumpsuit"
+	path = /obj/item/clothing/under/future_fashion_red_striped
+
+/datum/gear/uniform/future_fashion_green_striped
+	display_name = "Futuristic Green-Striped Jumpsuit"
+	path = /obj/item/clothing/under/future_fashion_green_striped
+
+/datum/gear/uniform/future_fashion_orange_striped
+	display_name = "Futuristic Orange-Striped Jumpsuit"
+	path = /obj/item/clothing/under/future_fashion_orange_striped
+
+/datum/gear/uniform/future_fashion_purple_striped
+	display_name = "Futuristic Purple-Striped Jumpsuit"
+	path = /obj/item/clothing/under/future_fashion_purple_striped
